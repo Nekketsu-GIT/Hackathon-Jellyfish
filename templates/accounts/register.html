@@ -2,13 +2,37 @@
 {% load bootstrap_tags %}
 
 {% block content %}
- <h1>Register</h1>
-<form method = 'POST' enctype='multipart/form-data'>
-   {% csrf_token %}
-   {{ user_form | as_bootstrap }}
-   {{ user_type_form | as_bootstrap }}
-    <input type="submit" value="Submit"/>
-</form>
+ <div class="col-md-12">
+      <div class="card card-container">
+        <img
+          id="profile-img" src="https://blog.appartoo.com/wp-content/uploads/2018/07/20017880_1581253411919110_6638363703880694461_o-1.jpg" class="profile-img-card" alt=""/>
 
-
+                <form method = 'POST' enctype='multipart/form-data'>
+                   {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="username">Username</label>
+                            {{ user_form.username }}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="firstName">FirstName</label>
+                            {{ user_form.first_name }}
+                        </div>
+                    </div>
+                    <label for="lastName">LastName</label>
+                    {{ user_form.last_name }}
+                    <label for="email">Email</label>
+                    {{ user_form.email }}
+                    <label for="password1">Password</label>
+                    {{ user_form.password1 }}
+                    <label for="password2">Confirme Passwod</label>
+                    {{ user_form.password2 }}
+                    <label for="age">Age</label>
+                    {{ user_type_form.age }}
+                    <label for="phone">Phone</label>
+                    {{ user_type_form.phone }}
+                    <input type="submit" value="Submit"/>
+                </form>
+      </div>
+ </div>
 {% endblock content %}

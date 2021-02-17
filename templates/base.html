@@ -9,12 +9,12 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
         <meta name="google" content="notranslate" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-          rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-          crossorigin="anonymous"
-        />
+         <link
+              rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              crossorigin="anonymous"
+            />
 
         <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
     </head>
@@ -23,33 +23,38 @@
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="{% url 'home' %}">SeelK API</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <ul class="navbar-nav mr-auto active">
+              <li class="nav-item">
+                <a href="#" class="nav-link active">Mon Espace </a>
+              </li>
+            </ul>
 
-            <div class="collapse navbar-collapse col-lg-10" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    {% comment %}<li class="nav-item active">
-                        <a class="nav-link" href="{% url 'post_list' %}">Blog <span class="sr-only">(current)</span></a>
-                    </li>{% endcomment %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Alerts</a>
-                    </li>
-                </ul>
-            </div>
             {% if user.is_authenticated %}
-            <div class="col-lg-1"><a>{{ user.username }}</a>&nbsp;&nbsp;&nbsp;<a href="{% url 'logout' %}">logout</a></div>
+                 <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link active">{{ user.username }}</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'logout' %}">Deconnexion</a>
+                  </li>
+                </ul>
             {% else %}
-            <div class="col-lg-1"><a href="{% url 'login' %}">login</a>&nbsp;&nbsp;&nbsp;<a href="{% url 'register_patient' %}">Register</a></div>
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a href="{% url 'register_patient' %}" class="nav-link">Inscription</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{% url 'login' %}" class="nav-link active">Connexion</a>
+                  </li>
+                </ul>
             {% endif %}
-
         </nav>
         {% block content %}
         <!-- Content Goes here -->
         {% endblock content %}
         <!-- Footer -->
-        <footer class="py-3 bg-grey">
-            <p class="m-0 text-dark text-center ">Copyright &copy; Njureel</p>
-        </footer>
+        {% comment %}<footer class="py-3 bg-grey">
+            <p class="m-0 text-dark text-center">Copyright &copy; Njureel</p>
+        </footer>{% endcomment %}
     </body>
 </html>
