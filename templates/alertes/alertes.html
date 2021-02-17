@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load bootstrap_tags %}
+
+{% block content %}
+
+<div class="container">
+    <div class="col-md-8 mt-3 left">
+
+        {% if alerts_list %}
+        <ul>
+            {% for alert in alerts_list %}
+                <li><a href="">{{ alert.user.username }}</a></li>
+                <li><a href="">{{ alert.message }}</a></li>
+                <li><a href="">{{ alert.asset_id }}</a></li>
+                <li><a href="">{{ alert.min_value }}</a></li>
+                <li><a href="">{{ alert.max_value }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No Alert defined.</p>
+        {% endif %}
+    </div>
+
+    <div class="">
+        <ul>
+            <li><a href="#">add alert</a></li>
+        </ul>
+    </div>
+</div>
+
+
+{%endblock%}

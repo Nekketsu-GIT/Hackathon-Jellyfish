@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -89,6 +90,11 @@ class AlertDetailApiView(APIView):
         )
 
 
+def get_alerts(request):
+    alerts = Alert.objects.filter(user=request.user.id)
+    context = {'alerts_list': alerts}
+    return render(request, 'alertes/alertes.html', context)
+
 
 """
 api = CoinAPIv1(api_key)
@@ -163,4 +169,3 @@ while True:
 ws.close()
 
 """
-
