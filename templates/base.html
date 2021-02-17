@@ -4,7 +4,7 @@
 <html>
 
     <head>
-        <title>Njureel</title>
+        <title>Seelk API</title>
 
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
         <meta name="google" content="notranslate" />
@@ -17,7 +17,7 @@
     <body>
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{% url 'home' %}">Njureel</a>
+            <a class="navbar-brand" href="{% url 'home' %}">SeelK API</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -28,17 +28,8 @@
                         <a class="nav-link" href="{% url 'post_list' %}">Blog <span class="sr-only">(current)</span></a>
                     </li>{% endcomment %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Appointment</a>
+                        <a class="nav-link" href="#">Alerts</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Notifications</a>
-                    </li>
-                    {% if user.hospital %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'hospital_home' %}">MyHospital</a>
-                    </li>
-                    {% endif %}
                 </ul>
             </div>
             {% if user.is_authenticated %}
