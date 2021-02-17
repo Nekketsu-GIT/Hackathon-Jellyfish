@@ -6,5 +6,5 @@ from .views import (
 
 urlpatterns = [
     path('', AlertListApiView.as_view()),
-    path('<int:todo_id>/', AlertDetailApiView.as_view()),
+    path('<int:alert_id>/', AlertDetailApiView.as_view()),
 ]
