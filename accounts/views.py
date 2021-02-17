@@ -83,7 +83,7 @@ def login(request):
 
             if user is not None:
                 auth.login(request, user)
-                return redirect('/')
+                return redirect('/accounts/login')
             else:
                 login_form.add_error(None, "Your username or password are incorrect")
     else:
@@ -113,7 +113,7 @@ def register_user(request):
 
             if user is not None:
                 auth.login(request, user)
-                return redirect("/")
+                return redirect("/accounts/login")
             else:
                 user_form.add_error(None, "Can't log in now, try later.")
     else:
