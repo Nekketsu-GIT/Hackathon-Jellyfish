@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% load bootstrap_tags %}
+
+{% block content %}
+
+<nav class="nav flex-column">
+  <a class="nav-link" href="{% url 'hospital_home' %}">Dashboard</a>
+  <a class="nav-link active" href="{% url 'doctor_list' %}">Doctors</a>
+  <a class="nav-link" href="{% url 'patient_list' %}">Patients</a>
+
+</nav>
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="db_crypto@localhost" uuid="0ffe9381-bca0-4dbb-8a89-faae480c4148">
+      <driver-ref>mariadb</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://localhost:3306/db_crypto</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="db_crypto@immo-agence.fr" uuid="9c62b680-5c66-4877-86c1-4145bfbc4b40">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://immo-agence.fr:3306/db_crypto</jdbc-url>
+    </data-source>
+  </component>
+</project>

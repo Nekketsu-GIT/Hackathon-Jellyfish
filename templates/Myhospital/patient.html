@@ -1,0 +1,27 @@
+{% extends "Myhospital/hospital_home.html" %}
+
+{% load bootstrap_tags %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="col-md-8 mt-3 left">
+        {% if patient_list %}
+        <ul>
+            {% for patient in patient_list %}
+            <li><a href="">{{ patient.user.username }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No patient are available.</p>
+        {% endif %}
+
+    </div>
+    <div class="">
+        <ul>
+            <li><a href="{% url 'add_patient' %}">add patient</a></li>
+        </ul>
+    </div>
+</div>
+{%endblock%}
