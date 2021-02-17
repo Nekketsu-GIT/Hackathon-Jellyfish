@@ -8,6 +8,8 @@ pip
 Steps:
   pip install virtualenv
   §§
+  ./env/Scripts/activate
+  §§
   virtualenv env
   §§
   pip install -r requirements.txt
