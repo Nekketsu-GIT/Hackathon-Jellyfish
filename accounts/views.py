@@ -12,6 +12,7 @@ from rest_framework.utils import json
 from .UserSerializer import UserSerializer
 from .forms import UserLoginForm, UserRegistrationForm, MyUserRegistrationForm
 
+
 @api_view(["GET"])
 def getUsers(request):
     users = User.objects.all()

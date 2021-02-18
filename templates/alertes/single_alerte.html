@@ -1,11 +1,26 @@
-<form action="{% url "add_alert" %}" method='POST'> {% csrf_token %}
-    <label>Message</label><br/>
-    <input type="text" name="message"><br/>
-    <label>Asset id</label><br/>
-    <input type="text" name="asset_id"><br/>
-    <label>Min Value</label><br/>
-    <input type="number" name="min_value"><br/>
-    <label>Max Value</label><br/>
-    <input type="email" name="max_value"><br/>
-    <input type="submit" value="Creer" class="apply-button"/>
-</form>
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load bootstrap_tags %}
+{% block content %}
+    <div class="col-md-12">
+        <div class="card card-container">
+            <img
+                    id="profile-img"
+                    src="https://blog.appartoo.com/wp-content/uploads/2018/07/20017880_1581253411919110_6638363703880694461_o-1.jpg"
+                    class="profile-img-card" alt=""/>
+
+            <form action="{% url "add_alert" %}" method='POST'> {% csrf_token %}
+                <label>Message</label><br/>
+                <input type="text" name="message"><br/>
+                <label>Asset id</label><br/>
+                <input type="text" name="asset_id"><br/>
+                <label>Min Value</label><br/>
+                <input type="number" name="min_value"><br/>
+                <label>Max Value</label><br/>
+                <input type="email" name="max_value"><br/>
+                <input type="submit" value="Creer" class="apply-button"/>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+

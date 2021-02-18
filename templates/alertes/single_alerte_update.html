@@ -1,6 +1,25 @@
-<form action="" method="POST">
-{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="Edit Post"/>
-</form>
-<br/><br/>
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load bootstrap_tags %}
+{% block content %}
+    <div class="col-md-12">
+        <div class="card card-container">
+            <img
+                    id="profile-img"
+                    src="https://blog.appartoo.com/wp-content/uploads/2018/07/20017880_1581253411919110_6638363703880694461_o-1.jpg"
+                    class="profile-img-card" alt=""/>
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Edit Post"/>
+            </form>
+            <br/><br/>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+

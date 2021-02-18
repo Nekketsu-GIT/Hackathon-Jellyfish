@@ -139,6 +139,7 @@ def update(request, alert_id):
                    'error': 'The form was not updated successfully'}
         return render(request, 'alertes/single_alerte_update.html', context)
 
+
 """
 api = CoinAPIv1(api_key)
 
