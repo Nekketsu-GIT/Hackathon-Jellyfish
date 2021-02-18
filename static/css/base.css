@@ -31,3 +31,10 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+
+table .btn{
+  margin: 2px;
+}
+.fa {
+  margin-right: 10px;
+}

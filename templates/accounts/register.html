@@ -9,16 +9,15 @@
 
                 <form method = 'POST' enctype='multipart/form-data'>
                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="username">Username</label>
-                            {{ user_form.username }}
-                        </div>
-                        <div class="col-md-6">
-                            <label for="firstName">FirstName</label>
-                            {{ user_form.first_name }}
-                        </div>
-                    </div>
+
+
+                    <label for="username">Username</label>
+                    {{ user_form.username }}
+
+
+                    <label for="firstName">FirstName</label>
+                    {{ user_form.first_name }}
+
                     <label for="lastName">LastName</label>
                     {{ user_form.last_name }}
                     <label for="email">Email</label>
