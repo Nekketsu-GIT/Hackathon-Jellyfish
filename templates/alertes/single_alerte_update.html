@@ -1,6 +1,23 @@
-<form action="" method="POST">
-{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="Edit Post"/>
-</form>
-<br/><br/>
+{% extends "base.html" %}
+
+
+
+{% block content %}
+        {% load crispy_forms_tags %}
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-5">
+                <div class="form-group">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <br>
+                    <input type="submit" class="btn btn-primary btn-block" value="Edit Post"/>
+                </form>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <br/><br/>
+
+{% endblock %}
