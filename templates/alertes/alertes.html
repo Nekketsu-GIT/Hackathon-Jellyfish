@@ -46,14 +46,12 @@
                             <td>{{ alert.min_value }}</td>
                             <td>{{ alert.max_value }}</td>
                             <td class="text-center edit-block">
+
                               <span class="edit">
-                                <a href="#" class="btn btn-info btn-sm">Details</a>
-                              </span>
-                              <span class="edit">
-                                <a href="#" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="/alerts/update/{{alert.pk}}" class="btn btn-warning btn-sm">Edit</a>
                               </span>
                               <span class="delete">  <!--(click)="onRemoveEmployee(e)"-->
-                                <a href="/alerts/delete/{{ alert.id }}" class="btn btn-danger btn-sm">Delete</a>
+                                <a href="/alerts/delete/{{alert.pk}}" class="btn btn-danger btn-sm">Delete</a>
                               </span>
                             </td>
                         </tr>

@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import render, get_object_or_404, redirect
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
 from alerts.models import Alert
+from .AlertForm import AlertForm
 from .serializers import AlertSerializer
 
 
@@ -109,6 +111,33 @@ def add_alert(request):
 
     return render(request, 'alertes/single_alerte.html')
 
+
+def delete(request, alert_id):
+    get_object_or_404(Alert, pk=alert_id).delete()
+    return redirect('alertes')
+
+
+def update(request, alert_id):
+    obj = get_object_or_404(Alert, id=alert_id)
+
+    form = AlertForm(request.POST or None, instance=obj)
+    context = {'form': form}
+
+    if form.is_valid():
+        obj = form.save(commit=False)
+
+        obj.save()
+
+        messages.success(request, "You successfully updated the post")
+
+        context = {'form': form}
+
+        return render(request, 'alertes/single_alerte_update.html', context)
+
+    else:
+        context = {'form': form,
+                   'error': 'The form was not updated successfully'}
+        return render(request, 'alertes/single_alerte_update.html', context)
 
 """
 api = CoinAPIv1(api_key)

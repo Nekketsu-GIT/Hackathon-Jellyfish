@@ -70,7 +70,7 @@ def delete_user(request, user_id):
 
 
 def gethome(request):
-    return render(request, 'index.html')
+    return render(request, 'accounts/login.html')
 
 
 def login(request):
