@@ -3,12 +3,41 @@
 
 {% block content %}
 
-<form method = 'POST'>
-   {% csrf_token %}
-   {{ forms | as_bootstrap }}
-    <input type="submit" value="Submit"/>
-</form>
+    <div class="col-md-12">
+      <div class="card card-container">
+        <img
+          id="profile-img" src="https://blog.appartoo.com/wp-content/uploads/2018/07/20017880_1581253411919110_6638363703880694461_o-1.jpg" class="profile-img-card" alt=""/>
 
+        {% if not user.is_authenticated %}
+            <form method='POST'>
+            {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                        <label for="username">Username</label>
+                        {{ forms.username_or_email }}
+                        <label for="password">Password</label>
+                        {{ forms.password }}
+                    </div>
+                    <div class="col-md-4"></div>
+                    <br>
+                </div>
+                <br />
+              <div class="form-group">
+                  <input type="submit" class="btn btn-primary btn-block" value="login">
+              </div>
+        </form>
+      {% endif %}
+        {% if user.is_authenticated %}
+          <div class="card">
+            <h5 class="alert alert-success card-header">Welcome dear {{ user.username }}</h5>
+              <h5 class="card-title">Username: {{user.username}}</h5>
+              <p class="card-text">Email: {{user.email}}</p>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/alerts/mesAlertes" class="btn btn-primary">Mes Alertes</a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
 
 
 {% endblock content %}

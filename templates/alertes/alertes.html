@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% load bootstrap_tags %}
+
+{% block content %}
+
+<div class="container mt-4">
+    {% if user.is_authenticated %}
+        <header class="jumbotron">
+            <h3 style="text-align: center">
+              <strong>{{ user.username }}&nbsp;&nbsp;&nbsp; {{user.email}}  </strong>
+            </h3>
+        </header>
+    {% endif %}
+    <div class="container mt-4">
+        <div class="row">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-3"></div>
+          <div class="col-sm-4"></div>
+          <div class="border">
+            <a class="btn btn-md btn-outline-primary" href="#">Ajouter Alerte </a></div>
+        </div>
+        <table class="table">
+          <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Message</th>
+                <th scope="col">asset_id</th>
+                <th scope="col">min_value</th>
+                <th scope="col">max_value</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+          </thead>
+          <tbody>
+                {% if alerts_list %}
+                    {% for alert in alerts_list %}
+                        <tr>
+                            <td></td>
+                            <td>{{ alert.user.username }}</td>
+                            <td>{{ alert.user.email }}</td>
+                            <td>{{ alert.message }}</td>
+                            <td>{{ alert.asset_id }}</td>
+                            <td>{{ alert.min_value }}</td>
+                            <td>{{ alert.max_value }}</td>
+                            <td class="text-center edit-block">
+                              <span class="edit">
+                                <a href="#" class="btn btn-info btn-sm">Details</a>
+                              </span>
+                              <span class="edit">
+                                <a href="#" class="btn btn-warning btn-sm">Edit</a>
+                              </span>
+                              <span class="delete">  <!--(click)="onRemoveEmployee(e)"-->
+                                <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                              </span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                <p>No Alert defined.</p>
+                {% endif %}
+          </tbody>
+
+        </table>
+            {% comment %}{% if alerts_list %}
+            <ul>
+                {% for alert in alerts_list %}
+                    <li><a href="">{{ alert.user.username }}</a></li>
+                    <li><a href="">{{ alert.message }}</a></li>
+                    <li><a href="">{{ alert.asset_id }}</a></li>
+                    <li><a href="">{{ alert.min_value }}</a></li>
+                    <li><a href="">{{ alert.max_value }}</a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No Alert defined.</p>
+            {% endif %}{% endcomment %}
+
+
+    </div>
+</div>
+
+{%endblock%}
