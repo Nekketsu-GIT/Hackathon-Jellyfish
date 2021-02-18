@@ -18,7 +18,7 @@
           <div class="col-sm-3"></div>
           <div class="col-sm-4"></div>
           <div class="border">
-            <a class="btn btn-md btn-outline-primary" href="#">Ajouter Alerte </a></div>
+            <a class="btn btn-md btn-outline-primary" href="{% url 'add_alert' %}">Ajouter Alerte </a></div>
         </div>
         <table class="table">
           <thead class="thead-dark">
@@ -53,7 +53,7 @@
                                 <a href="#" class="btn btn-warning btn-sm">Edit</a>
                               </span>
                               <span class="delete">  <!--(click)="onRemoveEmployee(e)"-->
-                                <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                <a href="/alerts/delete/{{ alert.id }}" class="btn btn-danger btn-sm">Delete</a>
                               </span>
                             </td>
                         </tr>

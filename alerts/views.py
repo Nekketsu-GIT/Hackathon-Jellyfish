@@ -76,8 +76,8 @@ class AlertDetailApiView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     # 5. Delete
-    def delete(self, request, todo_id, *args, **kwargs):
-        alert_instance = self.get_object(todo_id)
+    def delete(self, request, alert_id, *args, **kwargs):
+        alert_instance = self.get_object(alert_id)
         if not alert_instance:
             return Response(
                 {"res": "Alert with alert id does not exists"},
@@ -94,6 +94,20 @@ def get_alerts(request):
     alerts = Alert.objects.filter(user=request.user.id)
     context = {'alerts_list': alerts}
     return render(request, 'alertes/alertes.html', context)
+
+
+def add_alert(request):
+    if request.method == 'POST':
+        Alert.objects.create(
+            message=request.POST.get('message'),
+            user_id=request.user.id,
+            asset_id=request.POST.get('asset_id'),
+            min_value=request.POST.get('min_value'),
+            max_value=request.POST.get('max_value')
+
+        )
+
+    return render(request, 'alertes/single_alerte.html')
 
 
 """
