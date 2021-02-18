@@ -46,5 +46,6 @@ Here is an POSTMAN collection to test the API CRUD for alerts and user:
 
 https://www.getpostman.com/collections/36efcec5b146c544f4df
 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/36efcec5b146c544f4df)
 
 
