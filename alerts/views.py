@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import render, get_object_or_404, redirect
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
 from alerts.models import Alert
+from .AlertForm import AlertForm
 from .serializers import AlertSerializer
 
 
@@ -76,8 +78,8 @@ class AlertDetailApiView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     # 5. Delete
-    def delete(self, request, todo_id, *args, **kwargs):
-        alert_instance = self.get_object(todo_id)
+    def delete(self, request, alert_id, *args, **kwargs):
+        alert_instance = self.get_object(alert_id)
         if not alert_instance:
             return Response(
                 {"res": "Alert with alert id does not exists"},
@@ -95,6 +97,47 @@ def get_alerts(request):
     context = {'alerts_list': alerts}
     return render(request, 'alertes/alertes.html', context)
 
+
+def add_alert(request):
+    if request.method == 'POST':
+        Alert.objects.create(
+            message=request.POST.get('message'),
+            user_id=request.user.id,
+            asset_id=request.POST.get('asset_id'),
+            min_value=request.POST.get('min_value'),
+            max_value=request.POST.get('max_value')
+
+        )
+
+    return render(request, 'alertes/single_alerte.html')
+
+
+def delete(request, alert_id):
+    get_object_or_404(Alert, pk=alert_id).delete()
+    return redirect('alertes')
+
+
+def update(request, alert_id):
+    obj = get_object_or_404(Alert, id=alert_id)
+
+    form = AlertForm(request.POST or None, instance=obj)
+    context = {'form': form}
+
+    if form.is_valid():
+        obj = form.save(commit=False)
+
+        obj.save()
+
+        messages.success(request, "You successfully updated the post")
+
+        context = {'form': form}
+
+        return render(request, 'alertes/single_alerte_update.html', context)
+
+    else:
+        context = {'form': form,
+                   'error': 'The form was not updated successfully'}
+        return render(request, 'alertes/single_alerte_update.html', context)
 
 """
 api = CoinAPIv1(api_key)

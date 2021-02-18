@@ -22,17 +22,21 @@
     <body>
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<<<<<<< HEAD
             <a class="navbar-brand" href="/accounts/login">SeelK API</a>
+=======
+            <a class="navbar-brand" href="{% url 'login' %}">SeelK API</a>
+>>>>>>> 6f7d89b87725d8b121f07b60ffb1a69680ed71d9
             <ul class="navbar-nav mr-auto active">
               <li class="nav-item">
-                <a href="#" class="nav-link active">Mon Espace </a>
+                <a href="{% url 'login' %}" class="nav-link active">Mon Espace </a>
               </li>
             </ul>
 
             {% if user.is_authenticated %}
                  <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                    <a href="#" class="nav-link active">{{ user.username }}</a>
+                    <a href="{% url 'login' %}" class="nav-link active">{{ user.username }}</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link active" href="{% url 'logout' %}">Deconnexion</a>
