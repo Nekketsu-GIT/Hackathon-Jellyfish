@@ -37,3 +37,14 @@ _4_. Run the server:
 _4_. Run the task scheduler: 
 
 `python manage.py qcluster`
+
+
+
+###### **Test User ansd Alert Rest api**
+
+Here is an POSTMAN collection to test the API CRUD for alerts and user:
+
+https://www.getpostman.com/collections/36efcec5b146c544f4df
+
+
+
